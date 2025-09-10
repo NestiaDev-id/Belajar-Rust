@@ -82,9 +82,58 @@ fn number_operation() {
 fn augmented_assingment() {
     let mut angka1 = 10;
     let mut angka2 = 12;
+
     angka1+=30;
     // angka1-=30;
     // angka1*=30;
 
     print!("{}", angka1)
+}
+
+// If-Else
+#[test]
+fn if_else_example() {
+    let number = 7;
+    if number < 5 {
+        println!("Kondisi benar, angka lebih kecil dari 5");
+    } else {
+        println!("Kondisi salah, angka lebih besar atau sama dengan 5");
+    }
+}
+
+// While Loop
+#[test]
+fn while_loop_example() {
+    let mut count = 0;
+    while count < 3 {
+        println!("Perulangan while ke-{}", count);
+        count += 1;
+    }
+}
+
+// Loop (mirip do-while, dengan break)
+#[test]
+fn loop_with_break() {
+    let mut counter = 0;
+    loop {
+        println!("Perulangan loop ke-{}", counter);
+        counter += 1;
+        if counter == 3 {
+            break; // Menghentikan perulangan
+        }
+    }
+}
+
+// For Loop
+#[test]
+fn for_loop_example() {
+    let a = [10, 20, 30, 40, 50];
+    for element in a.iter() {
+        println!("Nilai elemen: {}", element);
+    }
+
+    // For loop dengan range
+    for number in 1..4 {
+        println!("Angka dalam range: {}", number);
+    }
 }
