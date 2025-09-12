@@ -1,5 +1,20 @@
+mod karyawan;
+
 fn main() {
     println!("Hello, world!");
+
+    let mut joko = karyawan::Karyawan::new(String::from("Joko"), 5000000.0);
+
+    // Mengakses gaji menggunakan getter
+    println!("Gaji awal Joko: {}", joko.get_salary());
+
+    // Mencoba mengubah gaji dengan setter
+    joko.set_salary(6500000.0);
+    println!("Gaji baru Joko: {}", joko.get_salary());
+
+    // Mencoba mengubah gaji dengan nilai tidak valid
+    joko.set_salary(-1000000.0); // Output: Gaji tidak bisa negatif!
+    println!("Gaji terakhir Joko: {}", joko.get_salary());
 }
 
 #[test]
