@@ -137,3 +137,15 @@ fn for_loop_example() {
         println!("Angka dalam range: {}", number);
     }
 }
+
+#[test]
+fn match_example() {
+    let number = 10;
+
+    match number {
+        1 => println!("Angka adalah satu"),
+        2 | 3 => println!("Angka adalah dua atau tiga"),
+        4..=10 => println!("Angka ada di antara 4 dan 10"),
+        _ => println!("Angka adalah yang lain"),
+    }
+}
