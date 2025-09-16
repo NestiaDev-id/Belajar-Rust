@@ -164,3 +164,41 @@ fn match_example() {
         _ => println!("Angka adalah yang lain"),
     }
 }
+
+#[test]
+fn array_statis() {
+    // array 5 elemen integer.
+    let angka: [i32; 5] = [10, 20, 30, 40, 50];
+
+    println!("Elemen pertama: {}", angka[0]); // Output: Elemen pertama: 10
+    println!("Elemen terakhir: {}", angka[4]); // Output: Elemen terakhir: 50
+}
+
+#[test]
+fn array_inferensi() {
+    // Rust tahu ini adalah array `i32` dengan 4 elemen.
+    let nilai = [1, 2, 3, 4];
+    println!("Nilai array: {:?}", nilai); // Output: Nilai array: [1, 2, 3, 4]
+
+    let nol = [0; 5]; // Array dengan 5 elemen, semuanya 0.
+    println!("Array nol: {:?}", nol); // Output: Array nol: [0, 0, 0, 0, 0]
+}
+
+#[test]
+fn array_modifikasi_dan_iterasi() {
+    let mut item = [100, 200, 300];
+
+    // Mengubah nilai elemen pada indeks 1.
+    item[1] = 250;
+    println!("Array setelah modifikasi: {:?}", item); // [100, 250, 300]
+
+    // looping melalui setiap elemen.
+    println!("Looping melalui array:");
+    for (i, &angka) in item.iter().enumerate() {
+        println!("Indeks {} -> Nilai {}", i, angka);
+    }
+    // Output:
+    // Indeks 0 -> Nilai 100
+    // Indeks 1 -> Nilai 250
+    // Indeks 2 -> Nilai 300
+}
