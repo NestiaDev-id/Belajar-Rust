@@ -105,6 +105,71 @@ fn augmented_assingment() {
     print!("{}", angka1)
 }
 
+#[test]
+fn boolean() {
+    let a = true;
+    let b: bool = false;
+
+    println!("{} {}", a, b);
+}
+
+#[test]
+fn comparison_operation() {
+    let a = 10;
+    let b = 20;
+
+    let result: bool = a>b;
+
+    /*
+    ada && yang berarti "dan"
+    ada || yang berarti "atau"
+    ada ! yang berarti "tidak/kebalikan"
+     */
+    println!("{}", result);
+}
+#[test]
+fn boolean_operator() {
+    let absen = 75;
+    let nilai_akhir = 80;
+
+    let lulus_absen = absen >=75;
+    let lulus_nilai_akhir:bool = nilai_akhir >= 75;
+
+    let lulus: bool = lulus_absen && lulus_nilai_akhir;
+
+    println!("Kamu: {}", lulus);
+}
+
+#[test]
+fn char_type() {
+    let char1 = 'a';
+    let char2 = 'b';
+
+    println!("{} {}", char1, char2);
+}
+
+#[test]
+fn tupple() {
+    // let data: (i32, f64, bool) = (10, 10.5, true);
+    let mut data: (i32, f64, bool) = (10, 10.5, true);
+
+    println!("{:?}", data);
+
+    // let a = data.0;
+    // let b = data.1;
+    // let c = data.2;
+
+    let (a,b,c) = data;
+
+    // mutable tupple
+    data.0 = 20;
+    data.1 = 20.5;
+    data.2 = true;
+    println!("{} {} {}", a,b,c)
+}
+
+
+
 // If-Else
 #[test]
 fn if_else_example() {
