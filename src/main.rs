@@ -4,6 +4,7 @@ fn main() {
     println!("Hello, world!");
 
     let mut joko = karyawan::Karyawan::new(String::from("Joko"), 5000000.0);
+    // let karyawan = Karyawan::new(String::from("John"), 50000.0);
 
     // Mengakses gaji menggunakan getter
     println!("Gaji awal Joko: {}", joko.get_salary());
@@ -15,6 +16,9 @@ fn main() {
     // Mencoba mengubah gaji dengan nilai tidak valid
     joko.set_salary(-1000000.0); // Output: Gaji tidak bisa negatif!
     println!("Gaji terakhir Joko: {}", joko.get_salary());
+
+    println!("Nama karyawan: {}", joko.get_name());
+
 }
 
 #[test]
@@ -286,7 +290,7 @@ fn array_two_deminsional() {
     println!("{}", matrix[1][1]);
 }
 
-const MAXIMUM: i32 = 100;
+pub const MAXIMUM: i32 = 100;
 
 #[test]
 fn constant() {
@@ -306,7 +310,11 @@ fn variable_scope() {
         let uang_santi = 2000;
         println!("Uang Santi: {}", uang_santi);
     }
-
     // tidak bisa akses uang santi atau "error"
     // println!("Uang Santi: {}", uang_santi)
 }
+
+
+
+
+

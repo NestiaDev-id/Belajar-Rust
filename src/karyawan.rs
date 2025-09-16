@@ -13,6 +13,10 @@ impl Karyawan {
         self.salary
     }
 
+    pub fn get_name(&self) -> &str {
+        &self.nama
+    }
+
     // Metode publik untuk mengubah gaji (setter) dengan validasi
     pub fn set_salary(&mut self, new_salary: f64) {
         if new_salary > 0.0 {
