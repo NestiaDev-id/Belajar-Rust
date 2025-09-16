@@ -95,13 +95,13 @@ fn number_operation() {
 #[test]
 fn augmented_assingment() {
     let mut angka1 = 10;
-    let mut angka2 = 12;
+    let angka2 = 12;
 
     angka1 += 30;
     // angka1-=30;
     // angka1*=30;
 
-    print!("{}", angka1)
+    print!("{} {}", angka1, angka2)
 }
 
 #[test]
@@ -293,7 +293,8 @@ fn constant() {
     // kurang lebih seperti variabel lokal dan publik
     const MINIMUM: i32 = 0;
 
-    println!("{}", MINIMUM, MAXIMUM);
+    println!("Nilai Minimum: {}", MINIMUM);
+    println!("Nilai Maksimum: {}", MAXIMUM);
 }
 
 #[test]
