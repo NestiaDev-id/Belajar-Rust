@@ -285,3 +285,27 @@ fn array_two_deminsional() {
     println!("{}", matrix[1][0]);
     println!("{}", matrix[1][1]);
 }
+
+const MAXIMUM: i32 = 100;
+
+#[test]
+fn constant() {
+    // kurang lebih seperti variabel lokal dan publik
+    const MINIMUM: i32 = 0;
+
+    println!("{}", MINIMUM, MAXIMUM);
+}
+
+#[test]
+fn variable_scope() {
+    let uang_john = 1000;
+
+    {
+        println!("Uang John: {}", uang_john);
+        let uang_santi = 2000;
+        println!("Uang Santi: {}", uang_santi);
+    }
+
+    // tidak bisa akses uang santi atau "error"
+    // println!("Uang Santi: {}", uang_santi)
+}
