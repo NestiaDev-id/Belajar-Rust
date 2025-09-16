@@ -176,7 +176,6 @@ fn array_statis() {
 
 #[test]
 fn array_inferensi() {
-    // Rust tahu ini adalah array `i32` dengan 4 elemen.
     let nilai = [1, 2, 3, 4];
     println!("Nilai array: {:?}", nilai); // Output: Nilai array: [1, 2, 3, 4]
 
