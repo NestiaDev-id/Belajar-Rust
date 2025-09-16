@@ -24,7 +24,7 @@ fn hello_test() {
 
 #[test]
 fn test_variable() {
-    let mut name= "joko";
+    let mut name = "joko";
     println!("Hello {}", name);
 
     name = "marni";
@@ -32,7 +32,7 @@ fn test_variable() {
 }
 #[test]
 fn static_typing() {
-    let name= "joko";
+    let name = "joko";
     println!("Hello {}", name);
 
     // name = 20;
@@ -41,7 +41,7 @@ fn static_typing() {
 
 #[test]
 fn shadowing() {
-    let name= "joko";
+    let name = "joko";
     println!("Hello {}", name);
 
     let name = "budiono";
@@ -53,7 +53,7 @@ fn shadowing() {
 // ukuran default bilangan bulat i32 dan desimal f64
 #[test]
 fn explicit() {
-    let age: i32= 15;
+    let age: i32 = 15;
     println!("Saya berumur {}", age);
 }
 
@@ -63,7 +63,7 @@ fn number() {
     println!("Angka {}", a);
 
     let b: f32 = 10.6;
-    println!("Angka {}", b); 
+    println!("Angka {}", b);
 }
 
 #[test]
@@ -72,23 +72,22 @@ fn number_conversion() {
     println!("Angka {}", a);
 
     let b: i16 = a as i16;
-    println!("Angka {}", b); 
+    println!("Angka {}", b);
 
     let b: i32 = b as i32;
-    println!("Angka {}", b); 
-
+    println!("Angka {}", b);
 
     let overflow: i64 = 1000000000;
     let temp_overflow: i8 = overflow as i8;
 
-    println!("{}", temp_overflow) 
+    println!("{}", temp_overflow)
 }
 
 #[test]
 fn number_operation() {
     let angka1 = 10;
     let angka2 = 12;
-    let hasil = angka1*angka2;
+    let hasil = angka1 * angka2;
 
     print!("{}", hasil)
 }
@@ -98,7 +97,7 @@ fn augmented_assingment() {
     let mut angka1 = 10;
     let mut angka2 = 12;
 
-    angka1+=30;
+    angka1 += 30;
     // angka1-=30;
     // angka1*=30;
 
@@ -118,7 +117,7 @@ fn comparison_operation() {
     let a = 10;
     let b = 20;
 
-    let result: bool = a>b;
+    let result: bool = a > b;
 
     /*
     ada && yang berarti "dan"
@@ -132,8 +131,8 @@ fn boolean_operator() {
     let absen = 75;
     let nilai_akhir = 80;
 
-    let lulus_absen = absen >=75;
-    let lulus_nilai_akhir:bool = nilai_akhir >= 75;
+    let lulus_absen = absen >= 75;
+    let lulus_nilai_akhir: bool = nilai_akhir >= 75;
 
     let lulus: bool = lulus_absen && lulus_nilai_akhir;
 
@@ -159,16 +158,14 @@ fn tupple() {
     // let b = data.1;
     // let c = data.2;
 
-    let (a,b,c) = data;
+    let (a, b, c) = data;
 
     // mutable tupple
     data.0 = 20;
     data.1 = 20.5;
     data.2 = true;
-    println!("{} {} {}", a,b,c)
+    println!("{} {} {}", a, b, c)
 }
-
-
 
 // If-Else
 #[test]
@@ -231,6 +228,16 @@ fn match_example() {
 }
 
 #[test]
+fn array() {
+    let array: [i32; 5] = [1, 2, 3, 4, 5];
+
+    println!("{:?}", array);
+
+    let length: usize = array.len();
+    println!("{}", length);
+}
+
+#[test]
 fn array_statis() {
     // array 5 elemen integer.
     let angka: [i32; 5] = [10, 20, 30, 40, 50];
@@ -265,4 +272,16 @@ fn array_modifikasi_dan_iterasi() {
     // Indeks 0 -> Nilai 100
     // Indeks 1 -> Nilai 250
     // Indeks 2 -> Nilai 300
+}
+
+#[test]
+fn array_two_deminsional() {
+    let matrix: [[i32; 3]; 2] = [[1, 2, 3], [4, 5, 6]];
+
+    println!("{:?}", matrix);
+
+    println!("{}", matrix[0][0]);
+    println!("{}", matrix[0][1]);
+    println!("{}", matrix[1][0]);
+    println!("{}", matrix[1][1]);
 }
