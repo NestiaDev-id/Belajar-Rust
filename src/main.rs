@@ -338,4 +338,50 @@ fn function_b() {
 }
 
 
+#[test]
+fn string_type() {
+    // terdapat beberapa macam operasi pada string
+    // sumber https://doc.rust-lang.org/std/primitive.str.html
+    let mut name = String::from("   Joko Sudirman Wibowo    ");
+    println!("Hello {}", name);
 
+    name.push_str(" Budiono");
+    println!("Hello {}", name);
+
+    name.push('!');
+    println!("Hello {}", name);
+
+    let length = name.len();
+    println!("Panjang string: {}", length);
+
+    for word in name.split_whitespace() {
+        println!("{}", word);
+    }
+
+    let trim: &str = name.trim();
+    println!("Trim: {}", trim);
+
+    let replace = name.replace("Joko", "Santi");
+    println!("Replace: {}", replace);
+
+    let to_uppercase = name.to_uppercase();
+    println!("Uppercase: {}", to_uppercase);
+
+    let to_lowercase = name.to_lowercase();
+    println!("Lowercase: {}", to_lowercase);
+
+    let contains = name.contains("Joko");
+    println!("Contains 'Joko': {}", contains);
+
+    let substring = &name[0..4];
+    println!("Substring: {}", substring);
+}
+
+#[test]
+fn ownership() {
+    let a = String::from("Hello");
+    let b = a; // memindahkan ownership dari a ke b
+
+    // println!("{}", a); // error karena a sudah tidak memiliki ownership
+    println!("{}", b); // ini yang benar
+}
