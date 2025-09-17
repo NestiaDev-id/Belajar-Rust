@@ -314,7 +314,28 @@ fn variable_scope() {
     // println!("Uang Santi: {}", uang_santi)
 }
 
+#[test]
+fn stack_heap() {
+    function_a();
+    function_b();
 
+    // stack & heap
+    // stack ini akan menghapus variable ketika function selesai
+    // heap ini akan menghapus variable ketika program selesai
+    // stack akan menghapus dari function b terlebih dahulu, kemudian function a
+}
+
+fn function_a() {
+    let a = 10;
+    let b = String::from("Hello");
+    println!("{} {}", a, b);
+}
+
+fn function_b() {
+    let a = 20;
+    let b = String::from("World");
+    println!("{} {}", a, b);
+}
 
 
 
