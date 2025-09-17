@@ -227,6 +227,86 @@ fn for_loop_example() {
 }
 
 #[test]
+fn for_loop_label() {
+    let mut count = 0;
+    'outer: loop {
+        println!("Perulangan luar ke-{}", count);
+        let mut inner_count = 0;
+
+        loop {
+            println!("  Perulangan dalam ke-{}", inner_count);
+            if inner_count == 2 {
+                break; // Hanya keluar dari loop dalam
+            }
+            if count == 1 {
+                break 'outer; // Keluar dari loop luar
+            }
+            inner_count += 1;
+        }
+        count += 1;
+    }
+}
+
+#[test]
+fn loop_array() {
+    let array = [10, 20, 30, 40, 50];
+    let mut index = 0;
+    let range_eklusif = 0..array.len();
+    let range_inklusif = 0..=array.len()-1;
+
+    // * loop biasa
+    // loop {
+    //     if index >= array.len() {
+    //         break;
+    //     }
+    //     println!("Nilai array: {}", array[index]);
+    //     index += 1;
+    // }
+
+    // * while loop
+    // while index < array.len() {
+    //     println!("Nilai array: {}", array[index]);
+    //     index += 1;
+    // }
+
+    // * for loop
+    // for element in array.iter() {
+    //     println!("Nilai array: {}", element);
+    // }
+
+    // * for loop dengan range ekslusif
+    for i in range_eklusif {
+        println!("Nilai array: {}", array[i]);
+    }
+
+    // * for loop dengan range inklusif
+    for i in range_inklusif {
+        println!("Nilai array: {}", array[i]);
+    }
+}
+
+#[test]
+fn range() {
+    let range_eklusif = 0..5; // 0, 1, 2, 3, 4
+    println!("Start: {}", range_eklusif.start);
+    println!("End: {}", range_eklusif.end);
+
+    let array: [&str; 5] = ["A", "B", "C", "D", "E"];
+
+    for i in range_eklusif {
+        println!("Index ke-{} adalah {}", i, array[i]);
+    }
+
+    let range_inklusif = 0..=5; // 0, 1, 2, 3, 4, 5
+    println!("Start: {}", range_inklusif.start());
+    println!("End: {}", range_inklusif.end());
+
+    for i in range_inklusif {
+        println!("Index ke-{} adalah {}", i, array[i]);
+    }
+}
+
+#[test]
 fn match_example() {
     let number = 10;
 
