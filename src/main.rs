@@ -378,10 +378,47 @@ fn string_type() {
 }
 
 #[test]
+fn ownership_rules() {
+    // a tidak bisa diakses disini belum dideklarasikan
+    let a = 10;
+    
+    { // b tidak bisa diakses disini, karna belum dideklarasikan
+        let b = a; // menyalin nilai a ke b, karena tipe data i32 adalah tipe data yang disalin (Copy)
+        println!("Nilai b: {}", b);
+    } // scope b slesai, b dihapus kemudian, b sudah tidak bisa diakses lagi
+
+    println!("Nilai a: {}", a); // a masih bisa diakses di sini
+} // scope a selesai, a dihapus kemudian, a sudah tidak bisa diakses lagi
+
+#[test]
 fn ownership() {
     let a = String::from("Hello");
     let b = a; // memindahkan ownership dari a ke b
 
     // println!("{}", a); // error karena a sudah tidak memiliki ownership
     println!("{}", b); // ini yang benar
+}
+
+#[test]
+fn ownership_clone() {
+    let a = String::from("Hello");
+    let b = a.clone(); // menggandakan nilai a ke b
+
+    println!("a = {}, b = {}", a, b);
+
+    let angka1 = 10;
+    let angka2 = angka1; // menyalin nilai angka1 ke angka2
+
+    println!("angka1 = {}, angka2 = {}", angka1, angka2); 
+}
+fn takes_ownership(s: String) {
+    println!("{}", s);
+}
+
+#[test]
+fn ownership_move() {
+    let a = String::from("Hello");
+    takes_ownership(a); // memindahkan ownership ke fungsi
+
+    // println!("{}", a); // error karena a sudah tidak memiliki ownership
 }
