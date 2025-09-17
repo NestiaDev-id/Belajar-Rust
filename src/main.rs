@@ -174,12 +174,19 @@ fn tupple() {
 // If-Else
 #[test]
 fn if_else_example() {
-    let number = 7;
-    if number < 5 {
-        println!("Kondisi benar, angka lebih kecil dari 5");
+    let nilai = 70;
+    let hasil_akhir: &str;
+    
+    if nilai >= 80 {
+        hasil_akhir = "Nilai A";
+    } else if nilai >= 70 {
+        hasil_akhir = "Nilai B";
+    } else if nilai >= 60 {
+        hasil_akhir = "Nilai C";
     } else {
-        println!("Kondisi salah, angka lebih besar atau sama dengan 5");
+        hasil_akhir = "Nilai D";
     }
+    println!("Hasil akhir: {}", hasil_akhir);
 }
 
 // While Loop
