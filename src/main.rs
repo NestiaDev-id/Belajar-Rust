@@ -250,7 +250,7 @@ fn for_loop_label() {
 #[test]
 fn loop_array() {
     let array = [10, 20, 30, 40, 50];
-    let mut index = 0;
+    // let mut index = 0;
     let range_eklusif = 0..array.len();
     let range_inklusif = 0..=array.len()-1;
 
@@ -412,13 +412,13 @@ fn stack_heap() {
     // stack akan menghapus dari function b terlebih dahulu, kemudian function a
 }
 
-fn function_a() {
+pub fn function_a() {
     let a = 10;
     let b = String::from("Hello");
     println!("{} {}", a, b);
 }
 
-fn function_b() {
+pub fn function_b() {
     let a = 20;
     let b = String::from("World");
     println!("{} {}", a, b);
@@ -498,7 +498,7 @@ fn ownership_clone() {
 
     println!("angka1 = {}, angka2 = {}", angka1, angka2); 
 }
-fn takes_ownership(s: String) {
+pub fn takes_ownership(s: String) {
     println!("{}", s);
 }
 
@@ -509,3 +509,4 @@ fn ownership_move() {
 
     // println!("{}", a); // error karena a sudah tidak memiliki ownership
 }
+
