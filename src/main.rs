@@ -510,3 +510,85 @@ fn ownership_move() {
     // println!("{}", a); // error karena a sudah tidak memiliki ownership
 }
 
+#[test]
+fn test_function_parameter() {
+    let nilai1 = 10;
+    let nilai2 = 20;
+
+    let hasil = tambah(nilai1, nilai2);
+    println!("Hasil: {}", hasil);
+
+    // a dan b masih bisa diakses disini karena tipe data i32 adalah tipe data yang disalin (Copy)
+    println!("a: {}, b: {}", nilai1, nilai2);
+}
+
+pub fn tambah(a: i32, b: i32) -> i32 {
+    // tanda panah itu merupakan tipe data yang dikembalikan oleh fungsi
+    a + b
+}
+
+#[test]
+fn recrusive_function() {
+    let result = factorial(5);
+    println!("Factorial: {}", result); // Factorial: 120
+}
+
+pub fn factorial(n: u32) -> u32 {
+    if n == 0 {
+        1
+    } else {
+        n * factorial(n - 1)
+    }
+}
+
+#[test]
+fn function_ownership() {
+    let angka = 10;
+    print_number(angka); // angka masih bisa digunakan setelah dipanggil
+    println!("Angka di main: {}", angka);
+
+    let nama = String::from("Joko");
+    print_name(nama); // nama tidak bisa digunakan setelah dipanggil
+    // println!("Nama di main: {}", nama); // error karena nama sudah tidak memiliki ownership
+}
+
+pub fn print_number(num: i32) {
+    println!("Angka: {}", num);
+}
+pub fn print_name(name: String) {
+    println!("Nama: {}", name);
+}
+
+#[test]
+fn test_fullname() {
+    let first_name = String::from("Joko");
+    let last_name = String::from("Sudirman");
+
+    let name = full_name(&first_name, &last_name);
+
+    println!("Full Name: {}", name);
+    println!("First Name: {}", first_name); // Masih bisa diakses
+    println!("Last Name: {}", last_name);   // Masih bisa diakses
+}
+
+pub fn full_name(first_name: &str, last_name: &str) -> String {
+    format!("{} {}", first_name, last_name)
+}
+
+#[test]
+fn test_fullname_return() {
+    let first_name = String::from("Joko");
+    let last_name: String = String::from("Sudirman");
+
+    let (first_name, last_name, full_name) = full_name_return(&first_name, &last_name);
+
+    println!("Full Name: {}", full_name);
+    println!("First Name: {}", first_name); // Masih bisa diakses
+    println!("Last Name: {}", last_name);   // Masih bisa diakses
+}
+
+pub fn full_name_return(first_name: &String, last_name: &String) -> (String, String, String) {
+    let full_name = format!("{} {}", first_name, last_name);
+
+    (first_name.clone(), last_name.clone(), full_name)
+}
