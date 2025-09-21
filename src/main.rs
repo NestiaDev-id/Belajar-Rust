@@ -698,3 +698,43 @@ fn test_borrowing_slice_array() {
     }
 }
 
+#[test]
+fn test_string_literal() {
+    let s: &str = "Hello, world!";
+    println!("String literal: {}", s);
+    println!("Panjang string: {}", s.len());
+    println!("Karakter pertama: {}", s.chars().next().unwrap());
+}
+
+#[test]
+fn test_string_literal_slice() {
+    let s: &str = "Hello, world!";
+    let hello = &s[0..5];
+    let world = &s[7..12];
+    println!("Hello: {}", hello);
+    println!("World: {}", world);
+}
+
+#[test]
+fn test_string_literal_iterate() {
+    let s: &str = "Hello";
+    for c in s.chars() {
+        println!("{}", c);
+    }
+}
+
+#[test]
+fn test_string_literal_concat() {
+    let s1: &str = "Hello, ";
+    let s2: &str = "world!";        
+    let s3 = format!("{}{}", s1, s2);
+    println!("{}", s3);
+}
+#[test]
+fn test_string_literal_ownership() {
+    let s1: &str = "Hello, ";
+    let s2: String = String::from("world!");        
+    let s3 = s1.to_string() + &s2; // s1 diubah ke String
+    println!("{}", s3);
+}
+
