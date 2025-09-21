@@ -580,8 +580,9 @@ fn test_fullname_return() {
     let first_name = String::from("Joko");
     let last_name: String = String::from("Sudirman");
 
-    let (first_name, last_name, full_name) = full_name_return(&first_name, &last_name);
-
+    // let (first_name, last_name, full_name) = full_name_return(&first_name, &last_name);
+    let full_name = full_name_return(&first_name, &last_name).2;
+    
     println!("Full Name: {}", full_name);
     println!("First Name: {}", first_name); // Masih bisa diakses
     println!("Last Name: {}", last_name);   // Masih bisa diakses
@@ -591,4 +592,40 @@ pub fn full_name_return(first_name: &String, last_name: &String) -> (String, Str
     let full_name = format!("{} {}", first_name, last_name);
 
     (first_name.clone(), last_name.clone(), full_name)
+}
+
+#[test]
+fn test_borrowing_mutable() {
+    let mut name = String::from("Joko");
+    println!("Before: {}", name);
+    change_name(&mut name);
+    println!("After: {}", name);
+}
+
+pub fn change_name(name: &mut String) {
+    name.push_str(" Budiono");
+}
+
+#[test]
+fn test_borrowing_multiple() {
+    let mut name = String::from("Joko");
+    println!("Before: {}", name);
+    let name2 = &mut name;
+    println!("Name2: {}", name2);
+    let  name3 = &mut name;
+    println!("Name3: {}", name3);
+    change_name(name2);
+    change_name(name3);
+    println!("After: {}", name);
+}
+
+#[test]
+fn test_borrowing_scope() {
+    let mut name = String::from("Joko");
+    println!("Before: {}", name);
+    {
+        let name2 = &mut name;
+        change_name(name2);
+    }
+    println!("After: {}", name);
 }
