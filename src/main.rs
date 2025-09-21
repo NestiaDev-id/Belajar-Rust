@@ -664,3 +664,33 @@ fn test_no_dangling_reference() {
     let reference = no_dangle();
     println!("Reference: {}", reference);
 }
+
+#[test]
+fn test_borrowing_slice() {
+    let name = String::from("Joko Sudirman");
+    let first_word = first_word(&name);
+    println!("First word: {}", first_word);
+}
+
+pub fn first_word(s: &str) -> &str {
+    let bytes = s.as_bytes();
+
+    for (i, &item) in bytes.iter().enumerate() {
+        if item == b' ' {
+            return &s[0..i];
+        }
+    }
+
+    &s[..]
+}
+
+#[test]
+fn test_borrowing_slice_array() {
+    let array = [10, 20, 30, 40, 50];
+    let slice = &array[1..4];
+    println!("Slice: {:?}", slice);
+    for &item in slice.iter() {
+        println!("Item: {}", item);
+    }
+}
+
