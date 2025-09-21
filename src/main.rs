@@ -730,6 +730,7 @@ fn test_string_literal_concat() {
     let s3 = format!("{}{}", s1, s2);
     println!("{}", s3);
 }
+
 #[test]
 fn test_string_literal_ownership() {
     let s1: &str = "Hello, ";
@@ -737,4 +738,73 @@ fn test_string_literal_ownership() {
     let s3 = s1.to_string() + &s2; // s1 diubah ke String
     println!("{}", s3);
 }
+
+#[test]
+fn test_string_literal_methods() {
+    let s: &str = "   Hello, World!   ";
+    println!("Original: '{}'", s);
+    println!("Trimmed: '{}'", s.trim());
+    println!("Uppercase: '{}'", s.to_uppercase());
+    println!("Lowercase: '{}'", s.to_lowercase());
+    println!("Replaced: '{}'", s.replace("World", "Rust"));
+    println!("Contains 'Hello': {}", s.contains("Hello"));
+    println!("Starts with '   He': {}", s.starts_with("   He"));
+    println!("Ends with 'ld!   ': {}", s.ends_with("ld!   "));
+}
+
+#[test]
+fn test_string_literal_split() {
+    let s: &str = "Hello, world! Welcome to Rust.";
+    for word in s.split_whitespace() {
+        println!("{}", word);
+    }
+}
+
+#[test]
+fn test_string_literal_split_by() {
+    let s: &str = "Hello, world! Welcome to Rust.";
+    for word in s.split(',') {
+        println!("{}", word);
+    }
+}
+
+#[test]
+fn test_string_literal_split_by_char() {
+    let s: &str = "Hello, world! Welcome to Rust.";
+    for word in s.split('.') {
+        println!("{}", word);
+    }
+}
+
+#[test]
+fn test_string_literal_starts_ends() {
+    let s: &str = "Hello, world!";
+    println!("Starts with 'Hello': {}", s.starts_with("Hello"));
+    println!("Ends with 'world!': {}", s.ends_with("world!"));
+}
+
+#[test]
+fn test_string_literal_find() {
+    let s: &str = "Hello, world!";
+    match s.find("world") {
+        Some(index) => println!("Found 'world' at index: {}", index),
+        None => println!("'world' not found"),
+    }
+}
+
+#[test]
+fn test_string_literal_is_empty() {
+    let s1: &str = "";
+    let s2: &str = "Hello";
+    println!("Is s1 empty? {}", s1.is_empty());
+    println!("Is s2 empty? {}", s2.is_empty());
+}
+
+#[test]
+fn test_string_literal_repeat() {
+    let s: &str = "Hi! ";
+    let repeated = s.repeat(3);
+    println!("{}", repeated);
+}
+
 
