@@ -629,3 +629,16 @@ fn test_borrowing_scope() {
     }
     println!("After: {}", name);
 }
+
+#[test]
+fn test_borrowing_immutable() {
+    let name = String::from("Joko");
+    let name2 = &name;
+    let name3 = &name;
+    println!("Name2: {}", name2);
+    println!("Name3: {}", name3);
+    // change_name(name2); // error karena name2 adalah referensi immutable
+    // change_name(name3); // error karena name3 adalah referensi immutable
+    println!("Name: {}", name);
+}
+
