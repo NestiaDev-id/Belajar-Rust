@@ -642,3 +642,25 @@ fn test_borrowing_immutable() {
     println!("Name: {}", name);
 }
 
+#[test]
+fn test_dangling_reference() {
+    let reference = dangle();
+    println!("Reference: {}", reference);
+}
+
+pub fn dangle() -> &String {
+    let s = String::from("Hello");
+    &s // error karena s akan dihapus setelah fungsi selesai
+}
+
+// solusi
+pub fn no_dangle() -> String {
+    let s = String::from("Hello");
+    s // mengembalikan kepemilikan s ke pemanggil
+}
+
+#[test]
+fn test_no_dangling_reference() {
+    let reference = no_dangle();
+    println!("Reference: {}", reference);
+}
