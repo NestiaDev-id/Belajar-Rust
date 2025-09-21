@@ -807,4 +807,60 @@ fn test_string_literal_repeat() {
     println!("{}", repeated);
 }
 
+#[test]
+fn chess() {
+    let mut board = [[0; 8]; 8];
+
+    // Mengisi papan catur dengan angka
+    for i in 0..8 {
+        for j in 0..8 {
+            board[i][j] = (i * 8 + j) as i32;
+        }
+    }
+
+    // Menampilkan papan catur
+    for row in &board {
+        for &cell in row {
+            print!("{:2} ", cell);
+        }
+        println!();
+    }
+}
+
+#[test]
+fn test_input() {
+    use std::io;
+
+    let mut input = String::new();
+    println!("Masukkan sesuatu: ");
+    io::stdin().read_line(&mut input).expect("Gagal membaca input");
+    println!("Kamu memasukkan: {}", input.trim());
+}
+
+#[test]
+fn test_input_password() {
+    // gunakan create password biasa
+    use std::io;
+
+    println!("Masukkan password: ");
+    let mut password = String::new();
+    io::stdin().read_line(&mut password).expect("Gagal membaca password");
+    println!("Password yang dimasukkan: {}", password.trim());
+
+    // Memeriksa password
+    if password == "password123" {
+        println!("Password benar!");
+    } else {
+        println!("Password salah!");
+    }
+
+    // Menampilkan karakter terakhir
+    let last_char = password.chars().last().unwrap();
+    println!("Karakter terakhir: {}", last_char);
+
+    // Menampilkan karakter pertama
+    let first_char = password.chars().next().unwrap();
+    println!("Karakter pertama: {}", first_char);
+    
+}
 
