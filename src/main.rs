@@ -610,12 +610,16 @@ pub fn change_name(name: &mut String) {
 fn test_borrowing_multiple() {
     let mut name = String::from("Joko");
     println!("Before: {}", name);
-    let name2 = &mut name;
-    println!("Name2: {}", name2);
-    let  name3 = &mut name;
-    println!("Name3: {}", name3);
-    change_name(name2);
-    change_name(name3);
+    {
+        let name2 = &mut name;
+        println!("Name2: {}", name2);
+        change_name(name2);
+    }
+    {
+        let name3 = &mut name;
+        println!("Name3: {}", name3);
+        change_name(name3);
+    }
     println!("After: {}", name);
 }
 
@@ -648,9 +652,9 @@ fn test_dangling_reference() {
     println!("Reference: {}", reference);
 }
 
-pub fn dangle() -> &String {
+pub fn dangle() -> String {
     let s = String::from("Hello");
-    &s // error karena s akan dihapus setelah fungsi selesai
+    s
 }
 
 // solusi
