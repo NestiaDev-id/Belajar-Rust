@@ -866,6 +866,23 @@ fn test_input_password() {
         println!("Password maksimal 16 karakter!");
     }
 
+    // hashing password
+    use sha2::{Sha256, Digest};
+    let mut hasher = Sha256::new();
+    hasher.update(password);
+    let hash = hasher.finalize();
+    println!("Hash password: {}", hex::encode(hash));
+
+    // Memeriksa karakter spesial
+    // if password.chars().any(|c| c.is_ascii_punctuation()) {
+    //     println!("Password tidak boleh mengandung karakter spesial!");
+    // }
+
+    // Memeriksa angka
+    // if password.chars().any(|c| c.is_ascii_digit()) {
+    //     println!("Password tidak boleh mengandung angka!");
+    // }
+
     // Memeriksa password
     if password == "password123" {
         println!("Password benar!");
