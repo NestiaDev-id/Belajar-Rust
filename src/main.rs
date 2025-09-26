@@ -835,7 +835,15 @@ fn test_input() {
     println!("Masukkan sesuatu: ");
     io::stdin().read_line(&mut input).expect("Gagal membaca input");
     println!("Kamu memasukkan: {}", input.trim());
+
+    //umur bertipe integer
+    let mut umur = String::new();
+    println!("Masukkan umur: ");
+    io::stdin().read_line(&mut umur).expect("Gagal membaca umur");
+    let umur: u32 = umur.trim().parse().expect("Umur harus berupa angka");
+    println!("Umur kamu: {}", umur);
 }
+
 
 #[test]
 fn test_input_password() {
@@ -846,6 +854,17 @@ fn test_input_password() {
     let mut password = String::new();
     io::stdin().read_line(&mut password).expect("Gagal membaca password");
     println!("Password yang dimasukkan: {}", password.trim());
+
+    // hilangkan spasi di awal dan akhir
+    let password = password.trim();
+
+    // Memeriksa panjang password
+    if password.len() < 8 {
+        println!("Password harus memiliki panjang minimal 8 karakter!");
+    }
+    if password.len() > 16 {
+        println!("Password maksimal 16 karakter!");
+    }
 
     // Memeriksa password
     if password == "password123" {
@@ -864,3 +883,4 @@ fn test_input_password() {
     
 }
 
+#[test]
