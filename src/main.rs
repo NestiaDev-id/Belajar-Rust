@@ -901,3 +901,12 @@ fn test_input_password() {
 }
 
 #[test]
+fn test_input_trim() {
+    use std::io;
+
+    let mut input = String::new();
+    println!("Masukkan sesuatu: ");
+    io::stdin().read_line(&mut input).expect("Gagal membaca input");
+    let input = input.trim(); // Menghilangkan spasi di awal dan akhir
+    println!("Kamu memasukkan: '{}'", input);
+}
