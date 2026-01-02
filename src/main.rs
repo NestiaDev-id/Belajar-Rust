@@ -910,3 +910,88 @@ fn test_input_trim() {
     let input = input.trim(); // Menghilangkan spasi di awal dan akhir
     println!("Kamu memasukkan: '{}'", input);
 }
+
+// CRUD sederhana menggunakan vector dan struct
+#[derive(Debug, Clone)]
+struct User {
+    id: u32,
+    name: String,
+}
+
+#[test]
+fn crud() {
+    let mut users: Vec<User> = Vec::new();
+    let mut next_id: u32 = 1;
+
+    loop {
+        println!("\n=== MENU CRUD ===");
+        println!("1. Create User");
+        println!("2. Read Users");
+        println!("3. Update User");
+        println!("4. Delete User");
+        println!("5. Exit");
+        println!("Pilih menu:");
+
+        let choice = input();
+
+        match choice.trim() {
+            "1" => {
+                println!("Masukkan nama:");
+                let name = input();
+
+                users.push(User {
+                    id: next_id,
+                    name: name.trim().to_string(),
+                });
+
+                next_id += 1;
+                println!("User berhasil ditambahkan");
+            }
+            "2" => {
+                println!("\nDaftar User:");
+                for user in &users {
+                    println!("ID: {}, Nama: {}", user.id, user.name);
+                }
+            }
+            "3" => {
+                println!("Masukkan ID user yang ingin diupdate:");
+                let id: u32 = input().trim().parse().unwrap();
+
+                println!("Masukkan nama baru:");
+                let new_name = input();
+
+                match users.iter_mut().find(|u| u.id == id) {
+                    Some(user) => {
+                        user.name = new_name.trim().to_string();
+                        println!("User berhasil diupdate");
+                    }
+                    None => println!("User tidak ditemukan"),
+                }
+            }
+            "4" => {
+                println!("Masukkan ID user yang ingin dihapus:");
+                let id: u32 = input().trim().parse().unwrap();
+
+                let before = users.len();
+                users.retain(|u| u.id != id);
+
+                if users.len() < before {
+                    println!("User berhasil dihapus");
+                } else {
+                    println!("User tidak ditemukan");
+                }
+            }
+            "5" => {
+                println!("Keluar...");
+                break;
+            }
+            _ => println!("Pilihan tidak valid"),
+        }
+    }   
+}
+
+fn input() -> String {
+    let mut buf = String::new();
+    io::stdin().read_line(&mut buf).expect("Gagal membaca input");
+    buf
+}
